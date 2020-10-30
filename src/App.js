@@ -1,11 +1,11 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Redux
 import { Provider } from 'react-redux'
-import store from './store'
+import { store } from './redux/store'
 // Components
 import Login from './components/Login'
-import Signup from './components/Login'
+import Signup from './components/Signup'
 import Profile from './components/Profile'
 import Home from './components/Home'
 import Users from './components/Users'
@@ -14,11 +14,21 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-      <Route exact path='/login' component={Login} />
-      <Route exact path='/signup' component={Signup} />
-      <Route exact path='/profile' component={Profile} />
-      <Route exact path='/users' component={Users} />
-      <Route exact path='/home' component={Home} />
+        <Route path='/' component={Home} />
+        <Switch>
+          <Route path='/login'>
+            <Login />
+          </Route>
+          <Route path='/signup'>
+            <Signup />
+          </Route>
+          <Route path='/profile'>
+            <Profile />
+          </Route>
+          <Route path='/users'>
+           <Users />
+          </Route>
+        </Switch>
       </Router>
     </Provider>
   )
