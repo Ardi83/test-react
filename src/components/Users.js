@@ -25,7 +25,7 @@ const Users = ({ getUsers, users: { total_pages }, data , loading }) => {
           <div className="card-body">
             <h6 className="card-title">{user.email}</h6>
             <p className="card-text">{user.first_name}</p>
-            <a href="#" className="btn btn-primary">{user.last_name}</a>
+            <p className="cart-text">{user.last_name}</p>
           </div>
         </div>
       ))}
