@@ -3,6 +3,11 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './',
+        hot: true
+     },
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
