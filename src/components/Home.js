@@ -15,19 +15,19 @@ const Home = () => {
               <Link to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
             </li>
             <li className="nav-item">
-              <Link to="login" className="nav-link">Login</Link>
+              <Link to="/login" className="nav-link">Login</Link>
             </li>
 
             <li className="nav-item">
-              <Link to="signup" className="nav-link">Signup</Link>
+              <Link to="/signup" className="nav-link">Signup</Link>
             </li>
             <li className="nav-item">
-              <Link to="profile" className="nav-link">Profile</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="users" className="nav-link">Users</Link>
+              <Link to="/users" className="nav-link">Users</Link>
             </li>
           </ul>
+            <li className="nav-item">
+              <Link to="/" className="nav-link">Logout</Link>
+            </li>
         </div>
       </nav>
     </div>

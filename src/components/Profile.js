@@ -2,11 +2,13 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getProfile } from '../redux/actions/profile-actions'
 import Loading from './Loading'
+import { useParams } from 'react-router-dom'
+
 
 const Profile = ({ getProfile, profile: { data, ad }, loading }) => {
-
+  let { id } = useParams()
   useEffect(() => {
-    getProfile(2)
+    getProfile(id)
   }, [])
   
   if (loading) return <Loading />

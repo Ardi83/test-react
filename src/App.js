@@ -10,11 +10,12 @@ import Profile from './components/Profile'
 import Home from './components/Home'
 import Users from './components/Users'
 import Alert from './components/Alert';
+import {history} from './history'
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
         <Route path='/' component={Home} />
         <section className="container">
           <Alert />
@@ -25,9 +26,9 @@ const App = () => {
             <Route path='/signup'>
               <Signup />
             </Route>
-            <Route path='/profile'>
+            <Route path='/profile/:id'>  
               <Profile />
-            </Route>
+            </Route> 
             <Route path='/users'>
             <Users />
             </Route>

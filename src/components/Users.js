@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getUsers } from '../redux/actions/users-actions'
 import Loading from './Loading'
 import Pagination from './Pagination'
@@ -21,12 +22,14 @@ const Users = ({ getUsers, users: { total_pages }, data , loading }) => {
     <div className="d-flex flex-wrap">
       {data.map(user => (
         <div key={user.id} className="card m-2 col-md-3" style={{width: '18rem'}} >
-          <img src={user.avatar} className="card-img-top" alt={`${user.first_name}-image`} />
-          <div className="card-body">
-            <h6 className="card-title">{user.email}</h6>
-            <p className="card-text">{user.first_name}</p>
-            <p className="cart-text">{user.last_name}</p>
-          </div>
+          <Link to={`/profile/${user.id}`}>
+            <img src={user.avatar} className="card-img-top" alt={`${user.first_name}-image`} />
+            <div className="card-body">
+              <h6 className="card-title">{user.email}</h6>
+              <p className="card-text">{user.first_name}</p>
+              <p className="cart-text">{user.last_name}</p>
+            </div>
+          </Link>
         </div>
       ))}
     </div>
