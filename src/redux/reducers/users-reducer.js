@@ -1,4 +1,4 @@
-import { GET_USERS } from '../actions/types'
+import { GET_USERS, LOGOUT_USER } from '../actions/types'
 
 const initialState = {
   users: {},
@@ -11,6 +11,11 @@ export default (state = initialState , action) => {
     case GET_USERS:
       return {
         users: payload,
+        loading: false
+      }
+    case LOGOUT_USER:
+      return {
+        users: {},
         loading: false
       }
     default:

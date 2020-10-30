@@ -11,6 +11,7 @@ import Home from './components/Home'
 import Users from './components/Users'
 import Alert from './components/Alert';
 import {history} from './history'
+import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
   return (
@@ -26,11 +27,9 @@ const App = () => {
             <Route path='/signup'>
               <Signup />
             </Route>
-            <Route path='/profile/:id'>  
-              <Profile />
-            </Route> 
+            <PrivateRoute exact path='/profile/:id' component={Profile} />
             <Route path='/users'>
-            <Users />
+              <Users />
             </Route>
           </Switch>
         </section>

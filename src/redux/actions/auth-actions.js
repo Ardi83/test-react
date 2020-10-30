@@ -1,4 +1,4 @@
-import { LOGIN_USER } from './types'
+import { LOGIN_USER, LOGOUT_USER } from './types'
 import axios from 'axios'
 import { setAlert } from './alert-actions';
 
@@ -14,6 +14,7 @@ export const login = ({email, password}) => async dispatch => {
       type: LOGIN_USER,
       payload: res.data
     });
+      localStorage.setItem('token', res.data.token)
   } catch (err) {
     if(err) {
       const { error } = err.response.data
@@ -41,4 +42,9 @@ export const signup = ({email, password}) => async dispatch => {
       dispatch(setAlert(error, 'danger'));
     }
   }
+}
+
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT_USER })
+  localStorage.removeItem('token')
 }

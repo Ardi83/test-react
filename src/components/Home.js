@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { logout } from '../redux/actions/auth-actions'
+import { connect } from 'react-redux'
 
-const Home = () => {
+const Home = ({logout}) => {
   return (
-    <div>
-     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+     <nav className="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
       <a href="https://awave.se" target="_blank" className="navbar-brand">Awave test</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -25,13 +26,14 @@ const Home = () => {
               <Link to="/users" className="nav-link">Users</Link>
             </li>
           </ul>
+          <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link to="/" className="nav-link">Logout</Link>
+              <Link to="/" className="nav-link"><button onClick={logout} className="btn btn-dark">Logout</button></Link>
             </li>
+          </ul>
         </div>
       </nav>
-    </div>
   )
 }
 
-export default Home
+export default connect(null, {logout})(Home)
