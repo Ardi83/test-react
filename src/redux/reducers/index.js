@@ -6,7 +6,7 @@ import errorsReducer from './errors-reducer'
 
 export default combineReducers({
   authReducer,
-  // ProfileReducer,
+  ProfileReducer,
   errorsReducer,
   usersReducer,
 })

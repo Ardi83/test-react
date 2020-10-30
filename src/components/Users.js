@@ -1,26 +1,43 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getUsers } from '../redux/actions/users-actions'
+import Loading from './Loading'
 import Pagination from './Pagination'
 
-const Users = ({ getUsers, users: { total_pages } }) => {
+const Users = ({ getUsers, users: { total_pages }, data , loading }) => {
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
-    getUsers()
-  }, [])
+    getUsers(page)
+  }, [page])
+
+  if (loading) return <Loading />
+  const currentPage = page => {
+    setPage(page)
+  }
 
   return (
     <>
-      <div>
-        {total_pages}
-      </div>
-      <Pagination totalPages={total_pages} currentPage={1} />
+    <div className="d-flex flex-wrap">
+      {data.map(user => (
+        <div key={user.id} className="card m-2 col-md-3" style={{width: '18rem'}} >
+          <img src={user.avatar} className="card-img-top" alt={`${user.first_name}-image`} />
+          <div className="card-body">
+            <h6 className="card-title">{user.email}</h6>
+            <p className="card-text">{user.first_name}</p>
+            <a href="#" className="btn btn-primary">{user.last_name}</a>
+          </div>
+        </div>
+      ))}
+    </div>
+      <Pagination totalPages={total_pages} getCurrentPage={currentPage} />
     </>
   )
 }
 
 const mapStateToProps = state => ({
   users: state.usersReducer.users,
+  data: state.usersReducer.users.data,
   loading: state.usersReducer.loading
 })
 

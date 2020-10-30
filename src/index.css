@@ -1,0 +1,4 @@
+a[aria-disabled='true'] {
+  color: grey;
+  pointer-events: none;
+}
