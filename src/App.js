@@ -12,6 +12,7 @@ import Users from './components/Users'
 import Alert from './components/Alert';
 import {history} from './history'
 import PrivateRoute from './components/PrivateRoute';
+import RestrictedRoute from './components/RestrictedRoute';
 
 const App = () => {
   return (
@@ -21,12 +22,8 @@ const App = () => {
         <section className="container">
           <Alert />
           <Switch>
-            <Route path='/login'>
-              <Login />
-            </Route>
-            <Route path='/signup'>
-              <Signup />
-            </Route>
+            <RestrictedRoute path='/login' component={Login} />
+            <RestrictedRoute path='/signup' component={Signup} />
             <PrivateRoute exact path='/profile/:id' component={Profile} />
             <Route path='/users'>
               <Users />

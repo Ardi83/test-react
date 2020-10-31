@@ -20,7 +20,7 @@ const Users = ({ getUsers, users: { total_pages }, data , loading }) => {
   return (
     <>
     <div className="d-flex flex-wrap">
-      {data.map(user => (
+      {data && data.map(user => (
         <div key={user.id} className="card m-2 col-md-3" style={{width: '18rem'}} >
           <Link to={`/profile/${user.id}`}>
             <img src={user.avatar} className="card-img-top" alt={`${user.first_name}-image`} />

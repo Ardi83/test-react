@@ -27,9 +27,11 @@ const Home = ({logout}) => {
             </li>
           </ul>
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to="/" className="nav-link"><button onClick={logout} className="btn btn-dark">Logout</button></Link>
-            </li>
+            {!!localStorage.getItem('token') &&
+              <li className="nav-item">
+                <Link to="/" className="nav-link"><button onClick={logout} className="btn btn-dark">Logout</button></Link>
+              </li>
+            }
           </ul>
         </div>
       </nav>

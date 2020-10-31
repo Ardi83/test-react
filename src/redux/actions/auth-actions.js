@@ -15,6 +15,7 @@ export const login = ({email, password}) => async dispatch => {
       payload: res.data
     });
       localStorage.setItem('token', res.data.token)
+      window.location.reload()
   } catch (err) {
     if(err) {
       const { error } = err.response.data
